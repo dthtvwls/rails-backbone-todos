@@ -1,6 +1,7 @@
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models
+#= require_tree ./collections
 #= require_tree ./views
 #= require_tree ./routers
 
@@ -12,5 +13,5 @@ window.App =
 
 $ ->
   $.get '/todos.json', (todos)->
-    window.router = new App.Routers.TodosRouter todos: todos
+    window.router = new App.Routers.Todos todos: todos
     Backbone.history.start()
