@@ -2,7 +2,7 @@ App.Views.Todos ||= {}
 
 class App.Views.Todos.EditView extends Backbone.View
 
-  template: JST["backbone/templates/todos/edit"]
+  template: JST["templates/todos/edit"]
 
   events: "submit #edit-todo": "update"
 

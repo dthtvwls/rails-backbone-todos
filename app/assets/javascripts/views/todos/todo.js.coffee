@@ -1,7 +1,8 @@
 App.Views.Todos ||= {}
 
 class App.Views.Todos.TodoView extends Backbone.View
-  template: JST["backbone/templates/todos/todo"]
+
+  template: JST["templates/todos/todo"]
 
   events: "click .destroy": "destroy"
 
@@ -10,7 +11,6 @@ class App.Views.Todos.TodoView extends Backbone.View
   destroy: ->
     @model.destroy()
     this.remove()
-
     false
 
   render: ->

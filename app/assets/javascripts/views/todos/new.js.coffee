@@ -1,7 +1,8 @@
 App.Views.Todos ||= {}
 
 class App.Views.Todos.NewView extends Backbone.View
-  template: JST["backbone/templates/todos/new"]
+
+  template: JST["templates/todos/new"]
 
   events: "submit #new-todo": "save"
 
