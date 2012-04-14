@@ -6,9 +6,7 @@ class App.Models.Todo extends Backbone.Model
     content: 'empty todo...'
     done: false
 
-  initialize: ->
-    if !@get 'content'
-      @set "content": @defaults.content
+  initialize: -> @set "content": @defaults.content if !@get 'content'
 
   toggle: -> @save done: !@get 'done'
 

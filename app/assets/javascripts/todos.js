@@ -1,56 +1,24 @@
 $(function(){
 
-  var TodoList = Backbone.Collection.extend({
-
-    // Reference to this collection's model.
-    model: window.App.Models.Todo,
-
-    // Save all of the todo items under the `"todos"` namespace.
-    localStorage: new Store("todos-backbone"),
-
-    // Filter down the list of all todo items that are finished.
-    done: function() {
-      return this.filter(function(todo){ return todo.get('done'); });
-    },
-
-    // Filter down the list to only todo items that are still not finished.
-    remaining: function() {
-      return this.without.apply(this, this.done());
-    },
-
-    // We keep the Todos in sequential order, despite being saved by unordered
-    // GUID in the database. This generates the next order number for new items.
-    nextOrder: function() {
-      if (!this.length) return 1;
-      return this.last().get('order') + 1;
-    },
-
-    // Todos are sorted by their original insertion order.
-    comparator: function(todo) {
-      return todo.get('order');
-    }
-
-  });
-
   // Create our global collection of **Todos**.
-  var Todos = new TodoList;
+  var Todos = new window.App.Collections.Todos;
 
   // The DOM element for a todo item...
   var TodoView = Backbone.View.extend({
 
     //... is a list tag.
-    tagName:  "li",
+    tagName: "li",
 
     // Cache the template function for a single item.
     template: JST["templates/item"],
 
     // The DOM events specific to an item.
     events: {
-      "click .check"              : "toggleDone",
-      "dblclick label.todo-content" : "edit",
-      "click span.todo-destroy"   : "clear",
-      "keypress .todo-input"      : "updateOnEnter",
-      "blur .todo-input"          : "close"
+      "click .check"               : "toggleDone",
+      "dblclick label.todo-content": "edit",
+      "click span.todo-destroy"    : "clear",
+      "keypress .todo-input"       : "updateOnEnter",
+      "blur .todo-input"           : "close"
     },
 
     // The TodoView listens for changes to its model, re-rendering. Since there's
@@ -110,9 +78,9 @@ $(function(){
 
     // Delegated events for creating new items, and clearing completed ones.
     events: {
-      "keypress #new-todo":  "createOnEnter",
-      "keyup #new-todo":     "showTooltip",
-      "click .todo-clear a": "clearCompleted",
+      "keypress #new-todo"  : "createOnEnter",
+      "keyup #new-todo"     : "showTooltip",
+      "click .todo-clear a" : "clearCompleted",
       "click .mark-all-done": "toggleAllComplete"
     },
 
@@ -129,7 +97,7 @@ $(function(){
       Todos.bind('reset',   this.addAll);
       Todos.bind('all',     this.render);
 
-      Todos.fetch();
+      //Todos.fetch();
     },
 
     // Re-rendering the App just means refreshing the statistics -- the rest

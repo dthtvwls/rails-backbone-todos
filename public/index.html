@@ -8,12 +8,14 @@
     <script src="assets/jquery.js"></script>
     <script src="assets/underscore.js"></script>
     <script src="assets/backbone.js"></script>
-    <script src="assets/backbone-localstorage.js"></script>
+    <script src="assets/backbone_rails_sync.js"></script>
+    <script src="assets/backbone_datalink.js"></script>
+    <!-- <script src="assets/backbone-localstorage.js"></script> -->
     <script>
-    window.App = {};
-    App.Models = {};
+    window.App = { Models: {}, Collections: {} };
     </script>
     <script src="assets/models/todo.js"></script>
+    <script src="assets/collections/todos.js"></script>
     <script src="assets/todos.js"></script>
   </head>
   <body>
@@ -44,9 +46,9 @@
     </div>
 
     <div id="credits">
-      Created by<br />
-      <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>.<br />
-      Cleanup, edits: <a href="http://addyosmani.com">Addy Osmani</a>.
+      Sincere thanks to:<br />
+      <a href="http://jgn.me/">J&eacute;r&ocirc;me Gravel-Niquet</a>,
+      <a href="http://addyosmani.com">Addy Osmani</a>.
     </div>
 
   </body>
