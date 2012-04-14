@@ -1,51 +1,9 @@
-// An example Backbone application contributed by
-// [JÃ©rÃ´me Gravel-Niquet](http://jgn.me/). This demo uses a simple
-// [LocalStorage adapter](backbone-localstorage.js)
-// to persist Backbone models within your browser.
-
-// Load the application once the DOM is ready, using `jQuery.ready`:
 $(function(){
 
-  // Todo Model
-  // ----------
-
-  // Our basic **Todo** model has `content`, `order`, and `done` attributes.
-  var Todo = Backbone.Model.extend({
-
-    // Default attributes for the todo.
-    defaults: {
-      content: "empty todo...",
-      done: false
-    },
-
-    // Ensure that each todo created has `content`.
-    initialize: function() {
-      if (!this.get("content")) {
-        this.set({"content": this.defaults.content});
-      }
-    },
-
-    // Toggle the `done` state of this todo item.
-    toggle: function() {
-      this.save({done: !this.get("done")});
-    },
-
-    // Remove this Todo from *localStorage* and delete its view.
-    clear: function() {
-      this.destroy();
-    }
-
-  });
-
-  // Todo Collection
-  // ---------------
-
-  // The collection of todos is backed by *localStorage* instead of a remote
-  // server.
   var TodoList = Backbone.Collection.extend({
 
     // Reference to this collection's model.
-    model: Todo,
+    model: window.App.Models.Todo,
 
     // Save all of the todo items under the `"todos"` namespace.
     localStorage: new Store("todos-backbone"),
@@ -76,9 +34,6 @@ $(function(){
 
   // Create our global collection of **Todos**.
   var Todos = new TodoList;
-
-  // Todo Item View
-  // --------------
 
   // The DOM element for a todo item...
   var TodoView = Backbone.View.extend({
@@ -142,9 +97,6 @@ $(function(){
     }
 
   });
-
-  // The Application
-  // ---------------
 
   // Our overall **AppView** is the top-level piece of UI.
   var AppView = Backbone.View.extend({
