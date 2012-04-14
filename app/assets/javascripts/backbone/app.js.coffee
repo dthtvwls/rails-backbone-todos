@@ -9,3 +9,8 @@ window.App =
   Collections: {}
   Routers: {}
   Views: {}
+
+$ ->
+  $.get '/todos.json', (todos)->
+    window.router = new App.Routers.TodosRouter todos: todos
+    Backbone.history.start()

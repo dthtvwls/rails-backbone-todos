@@ -1,8 +1,25 @@
-<div id="todos"></div>
+<h1>Listing todos</h1>
 
-<script type="text/javascript">
-  $(function() {
-    window.router = new App.Routers.TodosRouter({todos: <%= @todos.to_json.html_safe -%>});
-    Backbone.history.start();
-  });
-</script>
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Done</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @todos.each do |todo| %>
+  <tr>
+    <td><%= todo.content %></td>
+    <td><%= todo.done %></td>
+    <td><%= link_to 'Show', todo %></td>
+    <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+    <td><%= link_to 'Destroy', todo, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Todo', new_todo_path %>
