@@ -14,5 +14,5 @@ class App.Models.Todo extends Backbone.Model
   # Toggle the `done` state of this todo item.
   toggle: -> @save done: !@get 'done'
 
-  # Remove this Todo from *localStorage* and delete its view.
+  # Remove this Todo and delete its view.
   clear: -> @destroy()

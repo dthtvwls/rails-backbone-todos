@@ -1,9 +1,7 @@
+#= require json2
 #= require jquery
-#= require jquery_ujs
 #= require underscore
 #= require backbone
-#= require backbone_rails_sync
-#= require backbone_datalink
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models
