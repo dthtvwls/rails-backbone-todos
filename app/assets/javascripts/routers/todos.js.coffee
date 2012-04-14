@@ -1,6 +1,6 @@
 class App.Routers.Todos extends Backbone.Router
 
-  initialize: (options) ->
+  initialize: (options)->
     @todos = new App.Collections.Todos()
     @todos.reset options.todos
 
