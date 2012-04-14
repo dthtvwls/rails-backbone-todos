@@ -1,5 +1,5 @@
-#= require json2
 #= require jquery
+#= require json2
 #= require underscore
 #= require backbone
 #= require_self
@@ -11,7 +11,6 @@
 window.App =
   Models: {}
   Collections: {}
-  Routers: {}
   Views: {}
 
 $ ->
